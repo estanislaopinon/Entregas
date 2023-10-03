@@ -1,0 +1,7 @@
+print()
+ranking_tree.inorden_file('jedis.txt')
+print(get_value_from_file('jedis.txt', ))
+print()
+ranking_tree.by_level()
+print()
+specie_tree.by_level()
