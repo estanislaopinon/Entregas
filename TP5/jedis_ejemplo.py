@@ -19,7 +19,7 @@ for index, linea_jedi in enumerate(read_lines):
 # name_tree.inorden()
 print()
 ranking_tree.inorden_file('jedis.txt')
-print(get_value_from_file('jedis.txt', ))
+# print(get_value_from_file('jedis.txt', ))
 print()
 ranking_tree.by_level()
 print()

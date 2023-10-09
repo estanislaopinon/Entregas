@@ -19,7 +19,7 @@ def carga(arbol):
              {'nombre': 'Ant Man ', 'heroe': True},
              {'nombre': 'Loki', 'heroe': False},
              {'nombre': 'Capitan América', 'heroe': True},
-             {'nombre': 'Dok Stranje', 'heroe': True}]
+             {'nombre': 'Dotor Strange', 'heroe': True}]
 
     for i in lista:
         arbol.insert_node(i['nombre'], i['heroe'])

@@ -278,6 +278,18 @@ class BinaryTree:
 
         __separacion_de_arbol(self.root, arbol_superheroes, arbol_villanos)
 
+    def jedi_master(self, jedi):
+        def __jedi_master(root, jedi):
+            if root is not None:
+                __jedi_master(root.left, jedi)
+                if root.value == jedi:
+                    pos = root.other_values
+                    if pos:
+                        print(get_value_from_file("TP5/jedis.txt", pos)[0])
+                __jedi_master(root.right, jedi)
+
+        __jedi_master(self.root, jedi)
+
 
 # arbol = BinaryTree()
 
