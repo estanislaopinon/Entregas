@@ -290,6 +290,42 @@ class BinaryTree:
 
         __jedi_master(self.root, jedi)
 
+    def maestros(self, fire):
+        def __maestros(root):
+            if root is not None:
+                __maestros(root.left)
+
+                if get_value_from_file(fire, root.other_values)[3] != '-':
+                    get_value_from_file(fire, root.other_values)
+                    print(get_value_from_file(fire, root.other_values))
+                __maestros(root.right)
+        __maestros(self.root)
+
+    def Togruta_o_Cerean(self, fire):
+        def __Togruta_o_Cerean(root):
+            if root is not None:
+                __Togruta_o_Cerean(root.left)
+
+                if 'torguta' in get_value_from_file(fire, root.other_values)[2].lower() or 'cerean' in get_value_from_file(fire, root.other_values)[2].lower():
+                    print(get_value_from_file(fire, root.other_values)[0])
+
+                __Togruta_o_Cerean(root.right)
+        __Togruta_o_Cerean(self.root)
+
+    def nombresAoGuion(self, fire):
+        def __nombresAoGuion(root):
+            if root is not None:
+                __nombresAoGuion(root.left)
+
+                valor = get_value_from_file(fire, root.other_values)[0].lower()
+                valor2 = valor[0]
+
+                if 'a' == valor2 or '-' in get_value_from_file(fire, root.other_values)[0].lower():
+                    print(get_value_from_file(fire, root.other_values)[0])
+
+                __nombresAoGuion(root.right)
+        __nombresAoGuion(self.root)
+
 
 # arbol = BinaryTree()
 

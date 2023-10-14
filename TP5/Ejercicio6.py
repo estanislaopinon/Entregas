@@ -4,10 +4,6 @@
 # siguientes consignas:
 
 
-# h. mostrar todos los Jedi de especie “Togruta” o “Cerean”;
-# i. listar los Jedi que comienzan con la letra A y los que contienen un “-” en su nombre.
-
-
 from arbol_binario import BinaryTree, get_value_from_file
 
 file_jedi = open("TP5/jedis.txt")
@@ -84,8 +80,15 @@ def listar_jedi_sableverde(archivo, color):
     print('Jedis con sable de color verde: ')
     print()
     nombre_arbol.inorden_file_lightsaber(archivo, color)
+    print()
 
 # g. listar todos los Jedi cuyos maestros están en el archivo;
+
+
+def mostrar_maestos(nombre_arbol):
+    print('Jedis con maestros: ')
+    nombre_arbol.maestros('TP5/jedis.txt')
+    print()
 
 
 barrido_inorden()
@@ -93,3 +96,11 @@ barrido_by_level()
 mostrar_info()
 jedis_master(ranking_arbol, 'jedi master')
 listar_jedi_sableverde("TP5/jedis.txt", 'green')
+mostrar_maestos(nombre_arbol)
+# h. mostrar todos los Jedi de especie “Togruta” o “Cerean”;
+print('Jedis de especie Togruta o Cerean:')
+nombre_arbol.Togruta_o_Cerean('TP5/jedis.txt')
+print()
+# i. listar los Jedi que comienzan con la letra A y los que contienen un “-” en su nombre.
+print('Jedis que empiezan con A o tienen - en su nombre: ')
+nombre_arbol.nombresAoGuion('TP5/jedis.txt')
