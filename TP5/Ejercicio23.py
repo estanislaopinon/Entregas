@@ -21,3 +21,9 @@ from arbol_binario import BinaryTree
 # l. modifique el nombre de la criatura Ladón por Dragón Ladón;
 # m. realizar un listado por nivel del árbol;
 # n. muestre las criaturas capturadas por Heracles.
+
+criaturas=BinaryTree()
+
+lista=[
+    
+]
