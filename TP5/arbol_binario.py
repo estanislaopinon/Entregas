@@ -11,9 +11,10 @@ def get_value_from_file(file_name, index):
 
 class NodeTree():
 
-    def __init__(self, value, other_values=None):
+    def __init__(self, value, other_values=None, other_values3=None):
         self.value = value
         self.other_values = other_values
+        self.other_values3 = other_values3
         self.left = None
         self.right = None
         self.height = 0
@@ -74,20 +75,22 @@ class BinaryTree:
                     root = self.double_rotation(root, False)
         return root
 
-    def insert_node(self, value, other_values=None):
+    def insert_node(self, value, other_values=None, other_values3=None):
 
-        def __insertar(root, value, other_values):
+        def __insertar(root, value, other_values, other_values3):
             if root is None:
-                return NodeTree(value, other_values)
+                return NodeTree(value, other_values, other_values3)
             elif value < root.value:
-                root.left = __insertar(root.left, value, other_values)
+                root.left = __insertar(
+                    root.left, value, other_values, other_values3)
             else:
-                root.right = __insertar(root.right, value, other_values)
+                root.right = __insertar(
+                    root.right, value, other_values, other_values3)
             root = self.balancing(root)
             self.update_height(root)
             return root
 
-        self.root = __insertar(self.root, value, other_values)
+        self.root = __insertar(self.root, value, other_values, other_values3)
 
     def by_level(self):
         if self.root is not None:
@@ -326,11 +329,29 @@ class BinaryTree:
                 __nombresAoGuion(root.right)
         __nombresAoGuion(self.root)
 
-    def inordencriaturas(self):
-        def __inordencriaturas(root):
+    def listado_inordencriaturas(self):
+        def __listado_inordencriaturas(root):
             if root is not None:
-                __inordencriaturas(root.left)
-                print(f'Criatura: {root.value} derrotado por: {root.other_values} descripcion: ') #continuar
+                __listado_inordencriaturas(root.left)
+                # continuar
+                print(
+                    f'Criatura: {root.value} derrotado por: {root.other_values} descripcion:{root.other_values3} ')
+                __listado_inordencriaturas(root.right)
+        __listado_inordencriaturas(self.root)
+
+    def inorden_ranking(self, ranking):
+        def __inorden_ranking(root, ranking):
+            if root is not None:
+                __inorden_ranking(root.left, ranking)
+                if root.other_values is not None:
+                    if root.other_values not in ranking:
+                        ranking[root.other_values] = 1
+                    else:
+                        ranking[root.other_values] += 1
+                __inorden_ranking(root.right, ranking)
+        __inorden_ranking(self.root, ranking)
+
+
 # arbol = BinaryTree()
 
 # for i in range(15):

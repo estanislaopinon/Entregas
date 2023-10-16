@@ -4,9 +4,6 @@ from arbol_binario import BinaryTree
 # a. listado inorden de las criaturas y quienes la derrotaron;
 # b. se debe permitir cargar una breve descripción sobre cada criatura;
 # c. mostrar toda la información de la criatura Talos;
-
-# [169]
-
 # d. determinar los 3 héroes o dioses que derrotaron mayor cantidad de criaturas;
 # e. listar las criaturas derrotadas por Heracles;
 # f. listar las criaturas que no han sido derrotadas;
@@ -22,30 +19,99 @@ from arbol_binario import BinaryTree
 # m. realizar un listado por nivel del árbol;
 # n. muestre las criaturas capturadas por Heracles.
 
-criaturas=BinaryTree()
+criaturas = BinaryTree()
 
 lista = [
-    {'Criaturas':'Ceto''Derrotado por': '-'},{'Criaturas':'Cerda de Cromión''Derrotado por': 'Teseo'},
-    {'Criaturas':'Tifón''Derrotado por': 'Zeus'},{'Criaturas':'Ortro''Derrotado por': 'Heracles'},
-    {'Criaturas':'Equidna''Derrotado por': 'Argos Panoptes'},{'Criaturas':'Toro de Creta''Derrotado por': 'Teseo'},
-    {'Criaturas':'Dino''Derrotado por': '-'},{'Criaturas':'Jabali de Calidón''Derrotado por': 'Atalanta'},
-    {'Criaturas':'Pefredo''Derrotado por': '-'},{'Criaturas':'Carcinos''Derrotado por': '-'},
-    {'Criaturas':'Enio''Derrotado por': '-'},{'Criaturas':'Gerión''Derrotado por': 'Heracles'},
-    {'Criaturas':'Escila''Derrotado por': '-'},{'Criaturas':'Cloto''Derrotado por': '-'},
-    {'Criaturas':'Caribdis''Derrotado por': '-'},{'Criaturas':'Láquesis''Derrotado por': '-'},
-    {'Criaturas':'Euríale''Derrotado por': '-'},{'Criaturas':'Átropos''Derrotado por': '-'},
-    {'Criaturas':'Esteno''Derrotado por': '-'},{'Criaturas':'Minotauro de Creta''Derrotado por': 'Teseo'},
-    {'Criaturas':'Medusa''Derrotado por': 'Perseo'},{'Criaturas':'Harpías''Derrotado por': '-'},
-    {'Criaturas':'Ladón''Derrotado por': 'Heracles'},{'Criaturas':'Argos Panoptes''Derrotado por': 'Hermes'},
-    {'Criaturas':'Águila del Cáucaso''Derrotado por': '-'},{'Criaturas':'Aves del Estínfalo''Derrotado por': '-'},
-    {'Criaturas':'Quimera''Derrotado por': 'Belerofonte'},{'Criaturas':'Talos''Derrotado por': 'Medea'},
-    {'Criaturas':'Hidra de Lerna''Derrotado por': 'Heracles'},{'Criaturas':'Sirenas''Derrotado por': '-'},
-    {'Criaturas':'León de Nemea''Derrotado por': 'Heracles'},{'Criaturas':'Pitón''Derrotado por': 'Apolo'},
-    {'Criaturas':'Esfinge''Derrotado por': 'Edipo'},{'Criaturas':'Cierva de Cerinea''Derrotado por': '-'},
-    {'Criaturas':'Dragón de la Cólquida''Derrotado por': '-'},{'Criaturas':'Basilisco''Derrotado por': '-'},
-    {'Criaturas':'Cerbero''Derrotado por': '-'},{'Criaturas':'Jabalí de Erimanto''Derrotado por': '-'}]
+    {'Criaturas': 'Ceto', 'Derrotado por': '-'},
+    {'Criaturas': 'Cerda de Cromión', 'Derrotado por': 'Teseo'},
+    {'Criaturas': 'Tifón', 'Derrotado por': 'Zeus'},
+    {'Criaturas': 'Ortro', 'Derrotado por': 'Heracles'},
+    {'Criaturas': 'Equidna', 'Derrotado por': 'Argos Panoptes'},
+    {'Criaturas': 'Toro de Creta', 'Derrotado por': 'Teseo'},
+    {'Criaturas': 'Dino', 'Derrotado por': '-'},
+    {'Criaturas': 'Jabali de Calidón', 'Derrotado por': 'Atalanta'},
+    {'Criaturas': 'Pefredo', 'Derrotado por': '-'},
+    {'Criaturas': 'Carcinos', 'Derrotado por': '-'},
+    {'Criaturas': 'Enio', 'Derrotado por': '-'},
+    {'Criaturas': 'Gerión', 'Derrotado por': 'Heracles'},
+    {'Criaturas': 'Escila', 'Derrotado por': '-'},
+    {'Criaturas': 'Cloto', 'Derrotado por': '-'},
+    {'Criaturas': 'Caribdis', 'Derrotado por': '-'},
+    {'Criaturas': 'Láquesis', 'Derrotado por': '-'},
+    {'Criaturas': 'Euríale', 'Derrotado por': '-'},
+    {'Criaturas': 'Átropos', 'Derrotado por': '-'},
+    {'Criaturas': 'Esteno', 'Derrotado por': '-'},
+    {'Criaturas': 'Minotauro de Creta', 'Derrotado por': 'Teseo'},
+    {'Criaturas': 'Medusa', 'Derrotado por': 'Perseo'},
+    {'Criaturas': 'Harpías', 'Derrotado por': '-'},
+    {'Criaturas': 'Ladón', 'Derrotado por': 'Heracles'},
+    {'Criaturas': 'Argos Panoptes', 'Derrotado por': 'Hermes'},
+    {'Criaturas': 'Águila del Cáucaso', 'Derrotado por': '-'},
+    {'Criaturas': 'Aves del Estínfalo', 'Derrotado por': '-'},
+    {'Criaturas': 'Quimera', 'Derrotado por': 'Belerofonte'},
+    {'Criaturas': 'Talos', 'Derrotado por': 'Medea'},
+    {'Criaturas': 'Hidra de Lerna', 'Derrotado por': 'Heracles'},
+    {'Criaturas': 'Sirenas', 'Derrotado por': '-'},
+    {'Criaturas': 'León de Nemea', 'Derrotado por': 'Heracles'},
+    {'Criaturas': 'Pitón', 'Derrotado por': 'Apolo'},
+    {'Criaturas': 'Esfinge', 'Derrotado por': 'Edipo'},
+    {'Criaturas': 'Cierva de Cerinea', 'Derrotado por': '-'},
+    {'Criaturas': 'Dragón de la Cólquida', 'Derrotado por': '-'},
+    {'Criaturas': 'Basilisco', 'Derrotado por': '-'},
+    {'Criaturas': 'Cerbero', 'Derrotado por': '-'},
+    {'Criaturas': 'Jabalí de Erimanto', 'Derrotado por': '-'}]
 
 for i in lista:
-    criaturas.insert_node(i['Criaturas'],i['Derrotado por'],None,None)
+    criaturas.insert_node(i['Criaturas'], i['Derrotado por'], None)
 
-#A
+# a.
+
+
+def mostrar_inorden():
+    print('Listado inorden de las criaturas y quienes la derrotaron: ')
+    print()
+    criaturas.listado_inordencriaturas()
+    print()
+
+
+# b.
+
+
+def agregar_descripcion():
+    criatura = input('Ingrese la criatura que desea buscar: ')
+    print()
+    descripcion = input('Ingrese la descripcion que desea agregar: ')
+    value = criaturas.search(criatura)
+    value.other_values3 = descripcion
+    criaturas.listado_inordencriaturas()
+
+# c.
+
+
+def mostrar_infoCriaturaTalos(criaturas):
+    value = criaturas.search('Talos')
+    print()
+    print('Información de Talos: ')
+    print()
+    print(
+        f'Criatura: {value.value} Derrotado por: {value.other_values} Descripcion: {value.other_values3}')
+    print()
+
+
+mostrar_inorden()
+# agregar_descripcion()
+mostrar_infoCriaturaTalos(criaturas)
+# d.
+dic_ranking = {}
+print('TOP 3 Heroes o Dioses que derrotaron mayor cantidad de Criaturas: ')
+print()
+criaturas.inorden_ranking(dic_ranking)
+
+
+def order_por(item):
+    return item[1]
+
+
+ordenados = list(dic_ranking.items())
+ordenados.sort(key=order_por, reverse=True)
+print(ordenados[1:4])
