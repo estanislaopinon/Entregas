@@ -24,6 +24,28 @@ from arbol_binario import BinaryTree
 
 criaturas=BinaryTree()
 
-lista=[
-    
-]
+lista = [
+    {'Criaturas':'Ceto''Derrotado por': '-'},{'Criaturas':'Cerda de Cromión''Derrotado por': 'Teseo'},
+    {'Criaturas':'Tifón''Derrotado por': 'Zeus'},{'Criaturas':'Ortro''Derrotado por': 'Heracles'},
+    {'Criaturas':'Equidna''Derrotado por': 'Argos Panoptes'},{'Criaturas':'Toro de Creta''Derrotado por': 'Teseo'},
+    {'Criaturas':'Dino''Derrotado por': '-'},{'Criaturas':'Jabali de Calidón''Derrotado por': 'Atalanta'},
+    {'Criaturas':'Pefredo''Derrotado por': '-'},{'Criaturas':'Carcinos''Derrotado por': '-'},
+    {'Criaturas':'Enio''Derrotado por': '-'},{'Criaturas':'Gerión''Derrotado por': 'Heracles'},
+    {'Criaturas':'Escila''Derrotado por': '-'},{'Criaturas':'Cloto''Derrotado por': '-'},
+    {'Criaturas':'Caribdis''Derrotado por': '-'},{'Criaturas':'Láquesis''Derrotado por': '-'},
+    {'Criaturas':'Euríale''Derrotado por': '-'},{'Criaturas':'Átropos''Derrotado por': '-'},
+    {'Criaturas':'Esteno''Derrotado por': '-'},{'Criaturas':'Minotauro de Creta''Derrotado por': 'Teseo'},
+    {'Criaturas':'Medusa''Derrotado por': 'Perseo'},{'Criaturas':'Harpías''Derrotado por': '-'},
+    {'Criaturas':'Ladón''Derrotado por': 'Heracles'},{'Criaturas':'Argos Panoptes''Derrotado por': 'Hermes'},
+    {'Criaturas':'Águila del Cáucaso''Derrotado por': '-'},{'Criaturas':'Aves del Estínfalo''Derrotado por': '-'},
+    {'Criaturas':'Quimera''Derrotado por': 'Belerofonte'},{'Criaturas':'Talos''Derrotado por': 'Medea'},
+    {'Criaturas':'Hidra de Lerna''Derrotado por': 'Heracles'},{'Criaturas':'Sirenas''Derrotado por': '-'},
+    {'Criaturas':'León de Nemea''Derrotado por': 'Heracles'},{'Criaturas':'Pitón''Derrotado por': 'Apolo'},
+    {'Criaturas':'Esfinge''Derrotado por': 'Edipo'},{'Criaturas':'Cierva de Cerinea''Derrotado por': '-'},
+    {'Criaturas':'Dragón de la Cólquida''Derrotado por': '-'},{'Criaturas':'Basilisco''Derrotado por': '-'},
+    {'Criaturas':'Cerbero''Derrotado por': '-'},{'Criaturas':'Jabalí de Erimanto''Derrotado por': '-'}]
+
+for i in lista:
+    criaturas.insert_node(i['Criaturas'],i['Derrotado por'],None,None)
+
+#A
