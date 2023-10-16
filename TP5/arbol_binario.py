@@ -11,10 +11,11 @@ def get_value_from_file(file_name, index):
 
 class NodeTree():
 
-    def __init__(self, value, other_values=None, other_values3=None):
+    def __init__(self, value, other_values=None, other_values3=None, fourth_value=None):
         self.value = value
         self.other_values = other_values
         self.other_values3 = other_values3
+        self.fourth_value = fourth_value
         self.left = None
         self.right = None
         self.height = 0
@@ -75,22 +76,23 @@ class BinaryTree:
                     root = self.double_rotation(root, False)
         return root
 
-    def insert_node(self, value, other_values=None, other_values3=None):
+    def insert_node(self, value, other_values=None, other_values3=None, fourth_value=None):
 
-        def __insertar(root, value, other_values, other_values3):
+        def __insertar(root, value, other_values, other_values3, fourth_value):
             if root is None:
-                return NodeTree(value, other_values, other_values3)
+                return NodeTree(value, other_values, other_values3, fourth_value)
             elif value < root.value:
                 root.left = __insertar(
-                    root.left, value, other_values, other_values3)
+                    root.left, value, other_values, other_values3, fourth_value)
             else:
                 root.right = __insertar(
-                    root.right, value, other_values, other_values3)
+                    root.right, value, other_values, other_values3, fourth_value)
             root = self.balancing(root)
             self.update_height(root)
             return root
 
-        self.root = __insertar(self.root, value, other_values, other_values3)
+        self.root = __insertar(
+            self.root, value, other_values, other_values3, fourth_value)
 
     def by_level(self):
         if self.root is not None:
@@ -329,13 +331,15 @@ class BinaryTree:
                 __nombresAoGuion(root.right)
         __nombresAoGuion(self.root)
 
+    # funciones creadas para el Ejercicio23
+
     def listado_inordencriaturas(self):
         def __listado_inordencriaturas(root):
             if root is not None:
                 __listado_inordencriaturas(root.left)
                 # continuar
                 print(
-                    f'Criatura: {root.value} derrotado por: {root.other_values} descripcion:{root.other_values3} ')
+                    f'Criatura: {root.value} Derrotado por: {root.other_values} Descripcion:{root.other_values3} Capturado por:{root.fourth_value} ')
                 __listado_inordencriaturas(root.right)
         __listado_inordencriaturas(self.root)
 
@@ -350,6 +354,43 @@ class BinaryTree:
                         ranking[root.other_values] += 1
                 __inorden_ranking(root.right, ranking)
         __inorden_ranking(self.root, ranking)
+
+    def criaturas_derrotadas_por_Heracles(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                if root.other_values == 'Heracles':
+                    print(root.value)
+                __inorden(root.right)
+        __inorden(self.root)
+
+    def Criaturas_no_derrotadas(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                if root.other_values == '-':
+                    print(root.value)
+                __inorden(root.right)
+        __inorden(self.root)
+
+    def search_by_criatura(self, value):
+        def __search_by_coincidence(root, value):
+            if root is not None:
+                if root.value.startswith(value):
+                    print(
+                        f'Criatura: {root.value} Derrotado por: {root.other_values} Descripcion:{root.other_values3} Capturado por:{root.fourth_value} ')
+                __search_by_coincidence(root.left, value)
+                __search_by_coincidence(root.right, value)
+        __search_by_coincidence(self.root, value)
+
+    def caputrados_por_Heracles(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                if root.fourth_value == 'Heracles':
+                    print(root.value)
+                __inorden(root.right)
+        __inorden(self.root)
 
 
 # arbol = BinaryTree()
