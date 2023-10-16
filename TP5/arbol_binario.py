@@ -326,7 +326,11 @@ class BinaryTree:
                 __nombresAoGuion(root.right)
         __nombresAoGuion(self.root)
 
-
+    def inordencriaturas(self):
+        def __inordencriaturas(root):
+            if root is not None:
+                __inordencriaturas(root.left)
+                print(f'Criatura: {root.value} derrotado por: {root.other_values} descripcion: ') #continuar
 # arbol = BinaryTree()
 
 # for i in range(15):
