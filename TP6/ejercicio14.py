@@ -1,5 +1,5 @@
 from grafo import Grafo
-from random import randint
+from random import uniform
 # Implementar sobre un grafo no dirigido los algoritmos necesario para dar solución a las si-
 # guientes tareas:
 
@@ -17,33 +17,58 @@ from random import randint
 
 grafo = Grafo(dirigido=False)
 
-habitaciones = ['cocina', 'comedor', 'cochera', 'quincho', 'baño-1', 'baño-2',
-                'habitación-1', 'habitación-2', 'sala de estar', 'terraza', 'patio']
+habitaciones = ['cocina', 'comedor', 'cochera', 'quincho', 'baño1', 'baño2',
+                'habitación1', 'habitación2', 'sala de estar', 'terraza', 'patio']
 
 for i in habitaciones:
     grafo.insert_vertice(i)
 
-j = 1
+# b.
+j = 0
 
-# for i in habitaciones[1:-1]:
-#     value = randint(1, 11)
-#     grafo.insert_arist(i, habitaciones[j-1], str(value))
-#     value = randint(1, 11)
-#     grafo.insert_arist(i, habitaciones[j+1], str(value))
-#     j = j+1
+for i in habitaciones:
+    position = grafo.search_vertice(i)
+    point = grafo.get_element_by_index(position)
+    if point[1].size() < 3:
+        k = 0
+        while j == 0:
+            if k >= len(habitaciones):
+                j = 1
+            else:
+                place = habitaciones[k]
+                positionb = grafo.search_vertice(place)
+                pointb = grafo.get_element_by_index(positionb)
+                checker = grafo.is_adyacent(point[0], pointb[0])
+                if pointb[1].size() < 3 and point[0] != pointb[0] and checker == False:
+                    val = uniform(1, 11)
+                    value = float(f"{val:.2f}")
+                    grafo.insert_arist(point[0], pointb[0], str(value))
+                    if point[1].size() == 3:
+                        j = 1
+                k += 1
+        j = 0
 
 
-i = 1
-
-while i < len(habitaciones):
-    value = randint(1, 11)
-    grafo.insert_arist(habitaciones[i], habitaciones[j-1], str(value))
-    if j+1 < len(habitaciones):
-
-        value = randint(1, 11)
-        grafo.insert_arist(habitaciones[i], habitaciones[j+1], str(value))
-
-    j = j+2
-    i = i+2
-
+val = uniform(1, 11)
+value = float(f"{val:.2f}")
+grafo.insert_arist("patio", "cochera", str(value))
+val = uniform(1, 11)
+value = float(f"{val:.2f}")
+grafo.insert_arist("cochera", "sala de estar", str(value))
+val = uniform(1, 11)
+value = float(f"{val:.2f}")
+grafo.insert_arist("baño1", "comedor", str(value))
+val = uniform(1, 11)
+value = float(f"{val:.2f}")
+grafo.insert_arist("comedor", "terraza", str(value))
 grafo.barrido()
+
+minima_exp = grafo.kruskal()
+
+min_exp = grafo.kruskal()
+total_cable = 0
+for i in min_exp:
+    k = i.split(";")
+    for j in k:
+        total_cable = total_cable + float(j.split("-")[2])
+print(f"Se necesitan {total_cable} metros de cable")

@@ -130,6 +130,16 @@ class Grafo():
             result = True if arista is not None else False
         return result
 
+    # verifica si dos vertices son adyacentes
+    def is_adyacent_criterio(self, origen, destino, criterio):
+        result = False
+        pos_origen = self.search_vertice(origen, criterio)
+        if pos_origen is not None:
+            ver_origen = self.get_element_by_index(pos_origen)
+            arista = ver_origen[1].search(destino, 'vertice')
+            result = True if arista is not None else False
+        return result
+
     def adyacents(self, origen):  # imprime las aristas adyacentes a un vertice especifico
         pos_origen = self.search_vertice(origen)
         if pos_origen is not None:
