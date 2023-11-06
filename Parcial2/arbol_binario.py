@@ -38,46 +38,7 @@ class BinaryTree:
             right_height = self.height(root.right)
             root.height = (left_height if left_height >
                            right_height else right_height) + 1
-    
-    def update_key(self,target_value,new_value):
-        def __update_key(root,target_value,new_value):
-            if root is None:
-                return
-            if root.value == target_value:
-                root.value = new_value
-            else:
-                __update_key(root.left,target_value,new_value)
-                __update_key(root.right,target_value,new_value)
 
-        __update_key(self.root,target_value,new_value)
-
-
-
-    def update_value(self, target_value,parameter, new_value):
-        #this modifies one of the items of the tree CANNOT be used to modify the key
-        def __update_value(current_node, target_value,parameter, new_value):
-            if current_node is None:
-                return
-            if current_node.value == target_value:
-                current_node.other_values[parameter] = new_value
-            else:
-                __update_value(current_node.left, target_value,parameter, new_value)
-                __update_value(current_node.right, target_value,parameter, new_value)
-
-        __update_value(self.root, target_value,parameter,new_value)
-
-    def update_value_for_name(self, target_value,parameter, new_value):
-        #this modifies one of the items of the tree CANNOT be used to modify the key
-        def __update_value(current_node, target_value,parameter, new_value):
-            if current_node is None:
-                return
-            if current_node.value == target_value:
-                current_node.other_values.parameter = new_value
-            else:
-                __update_value(current_node.left, target_value,parameter, new_value)
-                __update_value(current_node.right, target_value,parameter, new_value)
-
-        __update_value(self.root, target_value,parameter,new_value)
     def simple_rotation(self, root, control):
         if control:
             aux = root.left
@@ -431,29 +392,7 @@ class BinaryTree:
                 __inorden(root.right)
         __inorden(self.root)
 
-    def altura_yedi(self):  # metodo de ordenamiento, va imprimiendo desde la izq y de abajo para arriba (util en descendencia y alfabetica)
-        yedi_altura=[]
-        def __altura_yedi(root):
-            if root is not None:
-                __altura_yedi(root.left)
-                if root.other_values.altura > 100:
-                    yedi_altura.append(root.value)
-                __altura_yedi(root.right)
-            return yedi_altura
 
-        return __altura_yedi(self.root)
-    
-    def peso_yedi(self):  # metodo de ordenamiento, va imprimiendo desde la izq y de abajo para arriba (util en descendencia y alfabetica)
-        yedi_peso=[]
-        def __peso_yedi(root):
-            if root is not None:
-                __peso_yedi(root.left)
-                if root.other_values.peso <75:
-                    yedi_peso.append(root.value)
-                __peso_yedi(root.right)
-            return yedi_peso
-
-        return __peso_yedi(self.root)
 # arbol = BinaryTree()
 
 # for i in range(15):
