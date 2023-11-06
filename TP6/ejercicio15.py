@@ -45,44 +45,112 @@ maravillas_arquitectonicas = [
 ]
 grafo = Grafo(dirigido=False)
 
-for i in maravillas_arquitectonicas:
-    grafo.insert_vertice(i, "name")
 
-for i in maravillas_naturales:
-    grafo.insert_vertice(i, "name")
 
-for i in maravillas_naturales:
-    for j in maravillas_naturales:
-        positiona = grafo.search_vertice(i.name, "name")
-        pointa = grafo.get_element_by_index(positiona)
-        positionb = grafo.search_vertice(j.name, "name")
-        pointb = grafo.get_element_by_index(positionb)
-        checker = grafo.is_adyacent_criterio(
-            pointa[0].name, pointb[0].name, criterio="name")
-        if pointa[0].name != pointb[0].name and checker == False:
-            value = randint(100, 5000)
-            grafo.insert_arist(pointa[0].name, pointb[0].name, str(value), criterio_vertice="name")
+dic = {}
+
+#creates a dic with wonders, and charges'em in the graph
+#only the wonder.name will be introduced in the graph
+#if needed to use others parameters, will use the name to get an index from the dic
+#then use the index to acces the data
+for i in range(6):
+    dic[maravillas_arquitectonicas[i].name]= i
+    dic[maravillas_naturales[i].name]= i
+
+new_graph = Grafo(dirigido=False)
 
 for i in maravillas_arquitectonicas:
-    for j in maravillas_arquitectonicas:
-        positiona = grafo.search_vertice(i.name, "name")
-        pointa = grafo.get_element_by_index(positiona)
-        positionb = grafo.search_vertice(j.name, "name")
-        pointb = grafo.get_element_by_index(positionb)
-        checker = grafo.is_adyacent_criterio(
-            pointa[0].name, pointb[0].name, criterio="name")
-        if pointa[0].name != pointb[0].name and checker == False:
-            value = randint(100, 5000)
-            grafo.insert_arist(pointa[0].name, pointb[0].name, str(value), criterio_vertice="name")
+    grafo.insert_vertice(i.name)
 
-
-#FALTA PUNTO C PORQUE NO ANDA dijkstra
-#grafo.barrido()
 for i in maravillas_naturales:
-    positiona = grafo.search_vertice(i.name, "name")
+    grafo.insert_vertice(i.name)
+
+
+#connects wonders
+for i in maravillas_arquitectonicas:
+    positiona = grafo.search_vertice(i.name)
     pointa = grafo.get_element_by_index(positiona)
     for j in maravillas_arquitectonicas:
-        positionb = grafo.search_vertice(j.name, "name")
+        positionb = grafo.search_vertice(j.name)
         pointb = grafo.get_element_by_index(positionb)
+        checker = grafo.is_adyacent(pointa[0],pointb[0]) 
+        if  pointa != pointb and checker == False:
+            value = randint(100,5000)
+            grafo.insert_arist(pointa[0],pointb[0], value)
 
+for i in maravillas_naturales:
+    positiona = grafo.search_vertice(i.name)
+    pointa = grafo.get_element_by_index(positiona)
+    for j in maravillas_naturales:
+        positionb = grafo.search_vertice(j.name)
+        pointb = grafo.get_element_by_index(positionb)
+        checker = grafo.is_adyacent(pointa[0],pointb[0]) 
+        if  pointa != pointb and checker == False:
+            value = randint(100,5000)
+            grafo.insert_arist(pointa[0],pointb[0], value)
+
+
+#checks if exists different types same country
+countries = []
+for i in maravillas_naturales:
+    positiona = grafo.search_vertice(i.name)
+    pointa = grafo.get_element_by_index(positiona)
+    for j in maravillas_arquitectonicas:
+        positionb = grafo.search_vertice(j.name)
+        pointb = grafo.get_element_by_index(positionb)
+        index_A = dic[pointa[0]]
+        index_B = dic[pointb[0]]
+        if maravillas_arquitectonicas[index_B].country[0] in maravillas_naturales[index_A].country:
+            if (maravillas_arquitectonicas[index_B].country in countries) == False:
+                countries.append(maravillas_arquitectonicas[index_B].country)
+
+for i in countries:
+    print(f"{i[0]} posee los 2 tipos de maravilla")
+
+
+#checks if country has 2 or more wonders of the same type
+
+nature_2 = []
+non_nature_2 = []
+for i in maravillas_arquitectonicas:
+    positiona = grafo.search_vertice(i.name)
+    pointa = grafo.get_element_by_index(positiona)
+    for j in maravillas_arquitectonicas:
+        positionb = grafo.search_vertice(j.name)
+        pointb = grafo.get_element_by_index(positionb)
+        index_A = dic[pointa[0]]
+        index_B = dic[pointb[0]]
+        for k in maravillas_arquitectonicas[index_B].country:
+            for l in maravillas_arquitectonicas[index_A].country:
+                if k == l and pointb[0] != pointa[0]:
+                    if (k in non_nature_2) == False:
+                        non_nature_2.append(k)
+                 
+for i in maravillas_naturales:
+    positiona = grafo.search_vertice(i.name)
+    pointa = grafo.get_element_by_index(positiona)
+    for j in maravillas_naturales:
+        positionb = grafo.search_vertice(j.name)
+        pointb = grafo.get_element_by_index(positionb)
+        index_A = dic[pointa[0]]
+        index_B = dic[pointb[0]]
+        for k in maravillas_naturales[index_B].country:
+            for l in maravillas_naturales[index_A].country:
+                if k == l and pointb[0] != pointa[0]:
+                    if (k in nature_2) == False:
+                        nature_2.append(k)
+
+for i in nature_2:
+    print(f"{i} posee 2 maravillas(naturaleza) del mismo tipo")
+
+for i in non_nature_2:
+    print(f"{i} posee 2 maravillas(arquitectura) del mismo tipo")
+
+
+#maybe needed to implement something that checks the type-tree
+bosque = new_graph.kruskal()
+for arbol in bosque:
+    print('arbol')
+    for nodo in arbol.split(';'):
+        print(nodo)
 
