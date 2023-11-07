@@ -106,6 +106,18 @@ class BinaryTree:
                     cola_tree.arrive(node.left)
                 if node.right is not None:
                     cola_tree.arrive(node.right)
+        
+    def by_level_nombre(self):
+        if self.root is not None:
+            cola_arbol = Cola()
+            cola_arbol.arrive(self.root)
+            while cola_arbol.size() > 0:
+                node = cola_arbol.atention()
+                print(f"Nombre: {node.value}. Numero: {node.other_values[0]}. Tipo: {node.other_values[1]}")
+                if node.left is not None:
+                    cola_arbol.arrive(node.left)
+                if node.right is not None:
+                    cola_arbol.arrive(node.right)  
 
     def inorden(self):  # metodo de ordenamiento, va imprimiendo desde la izq y de abajo para arriba (util en descendencia y alfabetica)
         def __inorden(root):
@@ -188,6 +200,22 @@ class BinaryTree:
                 for tipo in tipos:
                     if tipo in ["Agua", "Fuego", "Planta", "Eléctrico"]:
                         print(root.other_values[1])
+                __inorden(root.right)
+        __inorden(self.root)
+    
+    def inorden_numero(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                print(f'Numero:{root.value} - Nombre:{root.other_values[0]} - Tipo:{root.other_values[1]}')
+                __inorden(root.right)
+        __inorden(self.root)
+
+    def inorden_nombre(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                print(f'Nombre:{root.value} - Numero:{root.other_values[0]} - Tipo:{root.other_values[1]}')
                 __inorden(root.right)
         __inorden(self.root)
     
@@ -441,7 +469,28 @@ class BinaryTree:
                 __inorden(root.right)
         __inorden(self.root)
 
+    def contador_pokemon_electricos(self):
+        def contar(root):
+            cont=0
+            if root is not None:
+                if "Eléctrico" in root.value:
+                    cont=1
+                cont+= contar(root.left)
+                cont+= contar(root.right)
+            return cont
+        return contar(self.root)
 
+    def contador_pokemon_acero(self):
+        def contar(root):
+            cont=0
+            if root is not None:
+                if "Acero" in root.value:
+                    cont=1
+                cont+= contar(root.left)
+                cont+= contar(root.right)
+            return cont
+        return contar(self.root)
+    
 # arbol = BinaryTree()
 
 # for i in range(15):

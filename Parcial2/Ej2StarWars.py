@@ -1,0 +1,69 @@
+from grafo import Grafo
+from random import randint
+
+# 2. Dado un grafo no dirigido con personajes de la saga Star Wars, implementar 
+# los algoritmos necesarios para resolver las siguientes tareas: 
+# a) cada vértice debe almacenar el nombre de un personaje, las aristas representan lacantidad 
+#de episodios en los que aparecieron juntos ambos personajes que se relacionan; 
+# b) hallar el árbol de expansión minino y determinar si contiene a Yoda; 
+# c) determinar cuál es el número máximo de episodio que comparten dos personajes, y quienes son. 
+# d) cargue al menos los siguientes personajes: Luke Skywalker, Darth Vader,
+# Yoda, Boba Fett, C-3PO, Leia, Rey, Kylo Ren, Chewbacca, Han Solo, R2-D2, BB-8.
+
+
+grafo = Grafo(dirigido=False)
+
+
+personajesStwrs = ["Luke Skywalker", "Darth Vader", "Yoda", "Boba Fett", "C 3PO", "Princess Leia", "Rey", "Kylo Ren", "Chewbacca", "Han Solo", "R2 D2", "BB 8"]
+
+for i in personajesStwrs:
+    grafo.insert_vertice(i)
+
+#a
+j=0
+
+
+for i in personajesStwrs:
+    posicion  = grafo.search_vertice(i)
+    point = grafo.get_element_by_index(posicion )
+    if point[1].size() < 4:
+        k = 0
+        while j == 0:
+            if k >= len(personajesStwrs):
+                j=1
+            else:
+                place = personajesStwrs[k]
+                posicionb = grafo.search_vertice(place)
+                pointb = grafo.get_element_by_index(posicionb)
+                checker = grafo.is_adyacent(point[0],pointb[0])
+                if pointb[1].size() < 3 and point[0] != pointb[0] and checker == False:
+                    value = randint(1, 20)
+                    grafo.insert_arist(point[0], pointb[0], value)
+                    if point[1].size() == 3:
+                        j=1
+                k += 1
+        j=0
+
+grafo.barrido()
+
+i=0
+
+#b
+#c
+
+tree_min = grafo.kruskal()
+
+valor_maximo = 0
+nodo_maximo = list
+for tree in tree_min:
+    print("Arbol Minimo")
+    for nodo in tree.split(";"):
+        value = nodo.split("-")
+        print(nodo)
+        if value[0]=="Yoda" or value[1]=="Yoda":
+            i = 1
+        if int(value[2])>valor_maximo:
+            nodo_maximo = value
+    if i ==1:
+        print("Yoda existe en el arbol minimo")
+        print(f"Esta es la arista de valor maximo {nodo_maximo[0]} y {nodo_maximo[1]} comparten {nodo_maximo[2]} episodios")

@@ -5,7 +5,8 @@ from arbol_binario import BinaryTree, get_value_from_file
 # último, la búsqueda debe ser por proximidad, es decir si busco “bul” se deben mostrar todos los Pokémons cuyos nombres comiencen o contengan dichos caracteres–; 
 # c) mostrar todos los nombres de todos los Pokémons de un determinado tipo agua, fuego, planta y eléctrico; 
 # d) realizar un listado en orden ascendente por número y nombre de Pokémon, y además un listado por nivel por nombre; 
-# e) mostrar todos los datos de los Pokémons: Jolteon, Lycanroc y Tyrantrum; f) Determina cuantos Pokémons hay de tipo eléctrico y acero. 
+# e) mostrar todos los datos de los Pokémons: Jolteon, Lycanroc y Tyrantrum; 
+# f) Determina cuantos Pokémons hay de tipo eléctrico y acero. 
 
 class Pokemon:
     def __init__(self, nombre, numero, tipos):
@@ -47,14 +48,29 @@ arbol_numero.inorden()
 arbol_tipo.inorden() 
 
 #b. 
+print('DATOS DE UN POKEMON A PARTIR DE SU NUMERO Y NOMBRE: ')
 arbol_numero.search_pokemon_por_numero(25)
 
 arbol_nombre.search_pokemon_por_nombre("Mewtwo")
 
 #c. 
+print('POKEMON A PARTIR DE TIPO AGUA, FUEGO, PLANTA Y ELÉCTRICO: ')
 arbol_tipo.inorden_tipos()
 
 #d.
-
-
-    
+print('LISTADO ASCENDENTE POR NUMERO:')
+arbol_numero.inorden_numero()
+print('LISTADO ASCENDENTE POR NOMBRE:')
+arbol_nombre.inorden_nombre()
+print('LISTADO ASCENDENTE POR NIVEL POR NOMBRE:')
+arbol_nombre.by_level_nombre()
+#e.
+print('INFO DE JOLTEON, LYCANROC Y TYRANTRUM:')
+arbol_nombre.search_pokemon_por_nombre("Jolteon")
+arbol_nombre.search_pokemon_por_nombre("Lycanroc")
+arbol_nombre.search_pokemon_por_nombre("Tyrantrum")
+#f.
+contador_electricos=arbol_tipo.contador_pokemon_electricos()
+print(f'CANTIDAD DE POKEMONES ELÉCTRICOS:{contador_electricos} ')
+contador_acero= arbol_tipo.contador_pokemon_acero()
+print(f'CANTIDAD DE POKEMONES ACERO:{contador_acero}')
