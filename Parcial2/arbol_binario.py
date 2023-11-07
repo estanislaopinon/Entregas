@@ -168,6 +168,30 @@ class BinaryTree:
 
         __inorden_start_with_jedi(self.root, cadena)
 
+    # def inorden_tipos(self):
+    #     def __inorden(root):
+    #         if root is not None:
+    #            __inorden(root.left)
+    #            tipos= root.value.split("-")
+    #            for tipo in tipos:
+    #                if tipo in["Agua","Fuego","Planta","Eléctrico"]:
+    #                    print(root.other_values[1])
+                    
+    #         __inorden(root.right)
+    #     __inorden(self.root)
+
+    def inorden_tipos(self):
+        def __inorden(root):
+            if root is not None:
+                __inorden(root.left)
+                tipos = root.value.split("-")
+                for tipo in tipos:
+                    if tipo in ["Agua", "Fuego", "Planta", "Eléctrico"]:
+                        print(root.other_values[1])
+                __inorden(root.right)
+        __inorden(self.root)
+    
+
     def postorden(self):  # (metodo de ordenamiento)imprime de derecha, medio a izquierda (ascendente y antialfavetico)
         def __postorden(root):
             if root is not None:
@@ -209,6 +233,31 @@ class BinaryTree:
 
         return __search(self.root, key)
 
+    def search_pokemon_por_numero(self,key):
+        def __search(root,key):
+            if root is not None:
+                if root.value==key:
+                    print(f'Numero:{root.value}- Nombre:{root.other_values[0]} - Tipo:{root.other_values[1]}')
+                elif key< root.value:
+                    return __search(root.left,key)
+                else:
+                    return __search(root.right,key)
+        
+        return __search(self.root,key)
+
+    def search_pokemon_por_nombre(self,key):
+        def __search(root,key):
+            if root is not None:
+                if key in root.value:
+                    print(f'Nombre:{root.value} - Numero:{root.other_values[0]} - Tipo: {root.other_values[1]}')
+                elif key< root.value:
+                    return __search(root.left,key)
+                else:
+                    return __search(root.right,key)
+        
+        return __search(self.root,key)
+
+    
     def delete_node(self, key):  # borra un nodo
         def __replace(root):
             if root.right is None:
