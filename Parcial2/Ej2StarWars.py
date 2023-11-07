@@ -36,7 +36,7 @@ for i in personajesStwrs:
                 posicionb = grafo.search_vertice(place)
                 puntob = grafo.get_element_by_index(posicionb)
                 checker = grafo.is_adyacent(punto[0],puntob[0])
-                if puntob[1].size() < 3 and punto[0] != puntob[0] and checker == False:
+                if puntob[1].size() < 3 and punto[0] != puntob[0] and checker == False: 
                     value = randint(1, 20)
                     grafo.insert_arist(punto[0], puntob[0], value)
                     if punto[1].size() == 3:
