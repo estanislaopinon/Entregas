@@ -25,8 +25,8 @@ j=0
 
 for i in personajesStwrs:
     posicion  = grafo.search_vertice(i)
-    point = grafo.get_element_by_index(posicion )
-    if point[1].size() < 4:
+    punto = grafo.get_element_by_index(posicion )
+    if punto[1].size() < 4:
         k = 0
         while j == 0:
             if k >= len(personajesStwrs):
@@ -34,12 +34,12 @@ for i in personajesStwrs:
             else:
                 place = personajesStwrs[k]
                 posicionb = grafo.search_vertice(place)
-                pointb = grafo.get_element_by_index(posicionb)
-                checker = grafo.is_adyacent(point[0],pointb[0])
-                if pointb[1].size() < 3 and point[0] != pointb[0] and checker == False:
+                puntob = grafo.get_element_by_index(posicionb)
+                checker = grafo.is_adyacent(punto[0],puntob[0])
+                if puntob[1].size() < 3 and punto[0] != puntob[0] and checker == False:
                     value = randint(1, 20)
-                    grafo.insert_arist(point[0], pointb[0], value)
-                    if point[1].size() == 3:
+                    grafo.insert_arist(punto[0], puntob[0], value)
+                    if punto[1].size() == 3:
                         j=1
                 k += 1
         j=0
