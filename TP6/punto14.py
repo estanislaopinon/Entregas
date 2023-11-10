@@ -4,7 +4,7 @@
 # c. obtener el árbol de expansión mínima y determine cuantos metros de cables se necesitan para conectar todos los ambientes;
 # d. determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para determinar cuántos metros de cable de red se necesitan para conectar el router con el Smart Tv.
 from grafo import Grafo
-from random import uniform
+from random import randint
 
 mi_grafo = Grafo(dirigido=False)
 
@@ -31,26 +31,21 @@ for i in  habitaciones:
                 puntob=mi_grafo.get_element_by_index(posicionb)
                 tester= mi_grafo.is_adyacent(punto[0],puntob[0])
                 if puntob[1].size()<3 and punto[0] != puntob[0] and tester==False:
-                    num= uniform(1,11)
-                    valor= float(f"{num:.2f}")
+                    valor= randint(1,11)
                     mi_grafo.insert_arist(punto[0],puntob[0],valor)
                     if punto[1].size()==3:
                         j=1
                 k+=1
         j=0
 
-#se insertan aristas manualmente para cumplir condicion de que dos habitaciones tengan 5 aristas
-num= uniform(1,11)
-valor= float(f"{num:.2f}")
+#Se insertan aristas manualmente para cumplir condicion de que dos habitaciones tengan 5 aristas
+valor= randint(1,11)
 mi_grafo.insert_arist("patio","cochera",valor)
-num= uniform(1,11)
-valor= float(f"{num:.2f}")
+valor= randint(1,11)
 mi_grafo.insert_arist("cochera","sala de estar",valor)
-num= uniform(1,11)
-valor= float(f"{num:.2f}")
+valor= randint(1,11)
 mi_grafo.insert_arist("baño1","comedor",valor)
-num= uniform(1,11)
-valor= float(f"{num:.2f}")
+valor= randint(1,11)
 mi_grafo.insert_arist("comedor","terraza",valor)
 
 #se muestra el grafo con sus vertices y aristas respectivas
@@ -62,9 +57,9 @@ cable=0
 for i in arbol_min:
     nodo= i.split(";")
     for j in nodo:
-        cable=cable+ float(j.split("-")[2])
+        cable=cable+ int(j.split("-")[2])
 
-print(f'El total de cables necesario para conectar todos los ambientes es:{cable} metros')
+print(f'El total de cables necesario para conectar todos los ambientes es: {cable} metros')
 
 #d.determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para determinar cuántos metros de cable de red se necesitan para conectar el router con el Smart Tv.
 
@@ -73,7 +68,9 @@ k=0
 
 while k!=1:
     valor=camino.pop()
+    print(valor)
     if valor[0]=="sala de estar":
+    #if camino.size()==0:
         k=1
     
-print(f'Para conectar habitacion1 y sala de estar son necesarios:{valor[1]}metros')
+print(f'Para conectar habitacion1 y sala de estar son necesarios: {valor[1]} metros')

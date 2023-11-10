@@ -220,7 +220,7 @@ class Grafo():
     def kruskal(self):# implementea el algoritmo de kruskal para en contrar el arbol de expansion minima en el grafo
         def buscar_en_bosque(bosque, buscado):
             for index, arbol in enumerate(bosque):
-                print(buscado, arbol)
+                #print(buscado, arbol)
                 if buscado in arbol:
                     return index
 
