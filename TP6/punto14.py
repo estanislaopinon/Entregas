@@ -58,5 +58,22 @@ mi_grafo.barrido()
 #Se muestra el arbol de minima expansion
 arbol_min=mi_grafo.kruskal()
 
+cable=0
+for i in arbol_min:
+    nodo= i.split(";")
+    for j in nodo:
+        cable=cable+ float(j.split("-")[2])
 
+print(f'El total de cables necesario para conectar todos los ambientes es:{cable} metros')
 
+#d.determinar cuál es el camino más corto desde la habitación 1 hasta la sala de estar para determinar cuántos metros de cable de red se necesitan para conectar el router con el Smart Tv.
+
+camino=mi_grafo.dijkstra("habitacion1","sala de estar")
+k=0
+
+while k!=1:
+    valor=camino.pop()
+    if valor[0]=="sala de estar":
+        k=1
+    
+print(f'Para conectar habitacion1 y sala de estar son necesarios:{valor[1]}metros')
