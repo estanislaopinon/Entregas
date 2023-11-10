@@ -46,15 +46,15 @@ for i in range(7):
     diccionario[m_arquitectonicas[i].nombre] = i
     diccionario[m_naturales[i].nombre] = i
 
-#se insertan vertices naturales en el grafo
+#se insertan llista de m_naturales en el grafo
 for i in m_naturales:
     mi_grafo.insert_vertice(i.nombre)
 
-#se insertan vertices arquitectonicos en el grafo
+#se insertan lista de m_arquitectonicos en el grafo
 for i in m_arquitectonicas:
     mi_grafo.insert_vertice(i.nombre)
 
-mi_grafo.barrido()
+
 for i in m_naturales:
     posicionA=mi_grafo.search_vertice(i.nombre)
     puntoA= mi_grafo.get_element_by_index(posicionA)
@@ -77,7 +77,7 @@ for i in m_arquitectonicas:
             valor= randint(100,5000);
             mi_grafo.insert_arist(puntoA[0],puntoB[0],valor)
 
-#mi_grafo.barrido()
+mi_grafo.barrido()
 
 #c.
 valor=mi_grafo.kruskal()
@@ -98,4 +98,50 @@ for i in m_naturales:
         puntoB=mi_grafo.get_element_by_index(posicionB)
         id_A=diccionario[puntoA[0]]
         id_B=diccionario[puntoB[0]]
-        if 
+        #print(m_arquitectonicas[id_B].pais[0],m_naturales[id_A].pais)
+        if m_arquitectonicas[id_B].pais[0] in m_naturales[id_A].pais:
+            if (m_arquitectonicas[id_B].pais[0] in paises)==False:
+                paises.append(m_arquitectonicas[id_B].pais[0])
+print("")
+for i in paises:
+    print(f"{i} posee los 2 tipos de maravilla")  
+
+#e.
+naturales2=[]
+arquitectonicas2=[]
+
+for i in m_arquitectonicas:
+    posicionA=mi_grafo.search_vertice(i.nombre)
+    puntoA= mi_grafo.get_element_by_index(posicionA)
+    for j in m_arquitectonicas:
+        posicionB=mi_grafo.search_vertice(j.nombre)
+        puntoB=mi_grafo.get_element_by_index(posicionB)
+        id_A=diccionario[puntoA[0]]
+        id_B=diccionario[puntoB[0]]
+    
+        for k in m_arquitectonicas[id_B].pais:
+            for l in m_arquitectonicas[id_A].pais:
+                if k==l and puntoB[0]!= puntoA[0]:
+                    if (k in arquitectonicas2)== False:
+                        arquitectonicas2.append(k)
+
+for i in m_naturales:
+    posicionA=mi_grafo.search_vertice(i.nombre)
+    puntoA= mi_grafo.get_element_by_index(posicionA)
+    for j in m_naturales:
+        posicionB=mi_grafo.search_vertice(j.nombre)
+        puntoB=mi_grafo.get_element_by_index(posicionB)
+        id_A=diccionario[puntoA[0]]
+        id_B=diccionario[puntoB[0]]
+    
+        for k in m_naturales[id_B].pais:
+            for l in m_naturales[id_A].pais:
+                if k==l and puntoB[0]!= puntoA[0]:
+                    if (k in naturales2)== False:
+                        naturales2.append(k)
+
+for i in naturales2:
+    print(f'{i} posee dos maravillas naturales del mismo tipo')
+
+for i in arquitectonicas2:
+    print(f'{i} posee dos maravillas arquitectonicas del mismo tipo')
