@@ -274,8 +274,7 @@ class BinaryTree:
                 __separacion_de_arbol(
                     root.left, arbol_superheroes, arbol_villanos)
                 if root.other_values is True:
-                    arbol_superheroes.insert_node(
-                        root.value, root.other_values)
+                    arbol_superheroes.insert_node(root.value, root.other_values)
                 if root.other_values is False:
                     arbol_villanos.insert_node(root.value, root.other_values)
                 __separacion_de_arbol(

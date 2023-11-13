@@ -8,8 +8,7 @@
 # c. cambiar la casa de Dr. Strange a Marvel;
 # d. mostrar el nombre de aquellos superhéroes que en su biografía menciona la palabra
 # “traje” o “armadura”;
-# e. mostrar el nombre y la casa de los superhéroes cuya fecha de aparición
-# sea anterior a 1963;
+# e. mostrar el nombre y la casa de los superhéroes cuya fecha de aparición sea anterior a 1963;
 # f. mostrar la casa a la que pertenece Capitana Marvel y Mujer Maravilla;
 # g. mostrar toda la información de Flash y Star-Lord;
 # h. listar los superhéroes que comienzan con la letra B, M y S;
@@ -53,7 +52,7 @@ def superhéroes(lista):
 
 # A
 
-
+#funcion que ordena la lista en base al criterio nombre, realiza una busqueda de linterna verde, si lo encuentra, lo borra y se realiza un barrido para comprobar que no esta mas
 def Linterna_verde(lista):
     lista.order_by(criterio="nombre")
     index = lista.search_r("Linterna Verde", 0, lista.size(), "nombre")
@@ -64,7 +63,7 @@ def Linterna_verde(lista):
 
 # B
 
-
+#funcion que busca a Wolverine, si lo encuentra, se lo almacena y printea
 def Año_Wolverine(lista):
     indice = lista.search_r("Wolverine", 0, lista.size()-1, 'nombre')
     if indice != None:
@@ -73,7 +72,7 @@ def Año_Wolverine(lista):
 
 # C
 
-
+#cambia la casa del Dr Strange, realiza una busqueda de este en la lista, si lo encuentra, se le cambia la casa y se hace un barrido demostrando Dr Strange con casa DC
 def Cambio_casa(lista):
     indice = lista.search_r("Dr. Strange", 0, lista.size()-1, "nombre")
     if indice != None:
@@ -83,7 +82,7 @@ def Cambio_casa(lista):
 
 # D
 
-
+#Recorre la lista En caso de que el heroe en su biografia tenga la palabra armadura o traje, se lo printea diciendo que se encontraron estas palabras en su biografia 
 def traje_armadura(lista):
     for i in range(lista.size()):
         heroe = lista.get_element_by_index(i)
@@ -96,7 +95,7 @@ def traje_armadura(lista):
 
 # E
 
-
+#Recorre la lista de heroes, en caso de que su año de aparición sea menor a 1963, se muestra NOMBRE, CASA Y AÑO DE APARICION del heroe
 def superheroes_antes_1963(lista):
     for i in range(lista.size()):
         superheroe = lista.get_element_by_index(i)
@@ -106,7 +105,7 @@ def superheroes_antes_1963(lista):
 
 # F
 
-
+#Se busca a Capitana Marvel y Mujer Maravilla en la lista, si se las encuentra, se muestra el nombre del heroe y la casa a la que pertenece 
 def casa_capitanamarvel_y_mujermeravilla(lista):
     capitana = lista.search_r("Capitana Marvel", 0, lista.size()-1, "nombre")
     if capitana != None:
@@ -120,7 +119,7 @@ def casa_capitanamarvel_y_mujermeravilla(lista):
 
 
 # G
-
+#Busca a Flash y StarLord en la lista e imprime toda su información
 def informacion_Flash_Starlord(lista):
     flash = lista.search_r("Flash", 0, lista.size()-1, "nombre")
     if flash != None:

@@ -50,7 +50,7 @@ e2 = Entrenador('Maria', randint(1, 10), 2, 12)
 e3 = Entrenador('Lucia', randint(1, 10), 16, 10)
 
 entrenadores = [e1, e2, e3]
-lista_entrenadores = Lista()#Se decalra la lista
+lista_entrenadores = Lista()#Se declara la lista
 
 #Elementos de la clase Pokemon
 p1 = Pokemon('pikachu', 'electrico', randint(1, 20), 'ninguno')
@@ -82,7 +82,7 @@ for pokemon in pokemones:
 lista_entrenadores.barrido_entrenadores()
 print()
 
-# A obtener la cantidad de Pokémons de un determinado entrenador;
+# a. obtener la cantidad de Pokémons de un determinado entrenador;
 def cantidad_pokemones(lista_entrenadores, nombre):
     indice = lista_entrenadores.search(nombre, 'nombre')#Se busca la posicion del entrenador, retorna NONE si no se encuentra
     if indice != None:#Si es distinto de vacio
@@ -93,8 +93,6 @@ def cantidad_pokemones(lista_entrenadores, nombre):
         print('El entrenador ingresado no existe')
 
 # b. listar los entrenadores que hayan ganado más de tres torneos;
-
-
 def mas_de_tres_torneos(lista_entrenadores):
     for i in range(lista_entrenadores.size()):#Se ejecuta por todos los entrenadores
         value = lista_entrenadores.get_element_by_index(i)#Se guarda la información en la variable value
@@ -121,8 +119,7 @@ def pokemon_mayor_nivel(lista_entrenadores):#se toma la lista de entrenadores
             pokemon = sublista.get_element_by_index(pos)
             if pokemon.nivel > pokemon_mayor.nivel:
                 pokemon_mayor = pokemon
-    print(
-        f'El pokemon de mayor nivel del entrenador {entrenador.nombre} es {pokemon_mayor.nombre} con nivel {pokemon_mayor.nivel}')
+    print(f'El pokemon de mayor nivel del entrenador {entrenador.nombre} es {pokemon_mayor.nombre} con nivel {pokemon_mayor.nivel}')
 
 # d. mostrar todos los datos de un entrenador y sus Pokémos;
 def datos_entrenador_y_pokemones(lista_entrenadores, entrenador):
@@ -137,7 +134,7 @@ def datos_entrenador_y_pokemones(lista_entrenadores, entrenador):
 
 # e. mostrar los entrenadores cuyo porcentaje de batallas ganados sea mayor al 79 %;
 def porcentaje_batallas_ganadas(lista_entrenadores):
-    for i in range(0, lista_entrenadores.size()):#Cicla por los entrenadores, calcula su % y los improme en caso de que sean mayor a 79
+    for i in range(0, lista_entrenadores.size()):#Cicla por los entrenadores, calcula su % y los imprime en caso de que sean mayor a 79
         value = lista_entrenadores.get_element_by_index(i)
         batallas = value[0].cb_ganadas + value[0].cb_perdidas
         porcentaje = batallas * 0.79
@@ -152,11 +149,9 @@ def pokemon_tipo(lista_entrenadores):
         for j in range(0, valor[1].size()):#Cicla por los pokemones y comprueba los condicionales, en caso de serlo, printea
             value = valor[1].get_element_by_index(j)
             if (value.tipo == 'agua' and value.subtipo == 'volador'):
-                print(
-                    f'{valor[0].nombre} tiene a {value.nombre} de tipo: {value.tipo} y subtipo: {value.subtipo} ')
+                print(f'{valor[0].nombre} tiene a {value.nombre} de tipo: {value.tipo} y subtipo: {value.subtipo} ')
             elif (value.tipo == 'fuego' and value.subtipo == 'planta'):
-                print(
-                    f'{valor[0].nombre} tiene a {value.nombre} de tipo: {value.tipo} y subtipo: {value.subtipo} ')
+                print(f'{valor[0].nombre} tiene a {value.nombre} de tipo: {value.tipo} y subtipo: {value.subtipo} ')
 
 # g. el promedio de nivel de los Pokémons de un determinado entrenador;
 def promedio_pokemon(lista_entrenadores, buscar):#Recibe un entrenador,revisa si existe, cicla por los pokemones, los suma y despues calcula su promedio e imprime

@@ -36,16 +36,11 @@ def superheroes_con_C(arbol, letra, heroe):
     arbol.inorden_start_with(letra, heroe)
 
 # d. determinar cuántos superhéroes hay el árbol;
-
-
 def contador_superheroes(arbol, heroe):
     if heroe == True:
-        print(
-            f'La cantidad de superheroes en el arbol es: {arbol.contar_heroes(heroe)}')
+        print(f'La cantidad de superheroes en el arbol es: {arbol.contar_heroes(heroe)}')
 
 # e. Doctor Strange en realidad está mal cargado. Utilice una búsqueda por proximidad para encontrarlo en el árbol y modificar su nombre;
-
-
 def correccion_heroe(arbol):
     print('')
     nombre = input('Ingrese el nombre que quiere cambiar: ')
@@ -60,9 +55,8 @@ def correccion_heroe(arbol):
     else:
         print(f'{nombre} no esta en el arbol')
 
+
 # f. listar los superhéroes ordenados de manera descendente;
-
-
 def heroes_descendente(arbol):
     arbol.inorden_super_or_villano(True)
 
